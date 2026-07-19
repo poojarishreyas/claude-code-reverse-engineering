@@ -10,7 +10,7 @@
 
 ## The Setup: How You Catch a Ghost in Transit
 
-Claude Code is Anthropic's official CLI. It presents itself as a clean REPL in your terminal, but beneath that minimal exterior runs an elaborate orchestration engine that talks to the Anthropic Messages API on `/v1/messages`. To see what was being said, I built **api_jugaad** — a custom local Python proxy. I pointed Claude Code's `ANTHROPIC_BASE_URL` at my proxy (`http://localhost:3000`), instrumented it to capture every request/response pair as a numbered JSON file, and then seamlessly relayed the traffic to my own inference backend. I captured **96 consecutive API calls** from Claude Code sessions where the CLI was asked to build a Todo application.
+Claude Code is Anthropic's official CLI. It presents itself as a clean REPL in your terminal, but beneath that minimal exterior runs an elaborate orchestration engine that talks to the Anthropic Messages API on `/v1/messages`. To see what was being said, I built a custom local Python proxy. I pointed Claude Code's `ANTHROPIC_BASE_URL` at my proxy, instrumented it to capture every request/response pair as a numbered JSON file, and then seamlessly relayed the traffic to my own inference backend. I captured **96 consecutive API calls** from Claude Code sessions where the CLI was asked to build a Todo application.
 
 What I found was not a simple chatbot making API calls. What I found was a fully-featured **agentic operating system** communicating via a meticulously structured protocol.
 
